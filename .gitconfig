@@ -1,0 +1,7 @@
+[user]
+	name = Domonkos Suranyi
+	email = suranyi.domi@gmail.com
+[core]
+	editor = vim
+[alias]
+	vis = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)(%ar)%C(bold red)%d %C(green)%h %Creset- %s %C(dim white)/%aN/'
