@@ -54,15 +54,6 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
-# bindsym $mod+Shift+space floating toggle
-
-# focus the parent container
-# bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -128,8 +119,20 @@ bindsym $mod+c exec "chromium"
 bindsym $mod+q exec "i3lock --color=404040"
 bindsym $mod+m move workspace to output right
 bindsym $mod+space exec "$HOME/bin/switch_layout.sh"
-bindsym $mod+i exec "/$HOME/bin/mirror.sh"; exec $setBG
-bindsym $mod+o exec "$HOME/bin/rightof.sh"; exec $setBG
+
+set $mode_screen Launch: [1]: Primary only, [2]: Secondary only, [d]: Duplicate, [l]: Expand to right, [h] Expand to left
+bindsym $mod+i mode "$mode_screen"
+
+mode "$mode_screen" {
+    bindsym 1 exec "python $HOME/bin/screen.py first-only"; mode "default"; exec $setBG
+    bindsym 2 exec "python $HOME/bin/screen.py second-only"; mode "default"; exec $setBG
+    bindsym d exec "python $HOME/bin/screen.py duplicate"; mode "default"; exec $setBG
+    bindsym l exec "python $HOME/bin/screen.py right-of"; mode "default"; exec $setBG
+    bindsym h exec "python $HOME/bin/screen.py left-of"; mode "default"; exec $setBG
+    
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 
 set $mode_launcher Launch: [c]hromium [e]clipse mysql-[w]orbench
 bindsym $mod+n mode "$mode_launcher"
