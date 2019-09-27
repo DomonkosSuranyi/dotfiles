@@ -10,5 +10,4 @@ if index_of_discharging > -1:
   index_of_percentage = acpi_output[0].find('%')
   percentage = acpi_output[0][index_of_discharging + 13 : index_of_percentage]
   if int(percentage) < 10:
-    os.system('DISPLAY=:0.0 /usr/bin/notify-send "Low battery" "The batery is almost depleted" -u critical')
-
+    os.system('/usr/bin/notify-send "Low battery" "The batery is almost depleted" -u critical')
