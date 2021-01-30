@@ -22,7 +22,7 @@ def left_of(outputs):
 
 xrandr_output = subprocess.Popen(['xrandr'], stdout=subprocess.PIPE).communicate()
 xrandr_output = xrandr_output[0].decode('utf-8').split('\n')
-outputs = [x.split()[0] for x in xrandr_output if 'connected' in x]
+outputs = [x.split()[0] for x in xrandr_output if ' connected' in x]
 
 command = sys.argv[1]
 
